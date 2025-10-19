@@ -1,31 +1,67 @@
+// ============================================================================
+// GRADLE BUILD CONFIGURATION - PROJET RACINE ANDROID
+// ============================================================================
+//
+// Ce fichier configure le build Gradle pour l'ensemble du projet Android.
+// Il définit les repositories, les dépendances globales et les versions.
+//
+// Responsabilités :
+// - Configuration des repositories (Google, Maven Central)
+// - Définition de la version Kotlin
+// - Configuration des classpaths pour les plugins
+// - Configuration du dossier de build
+//
+// 
+// ============================================================================
+
 buildscript {
+    // ========== Version de Kotlin ==========
+    // Version utilisée pour tout le projet Android
+    // Doit être compatible avec la version Flutter utilisée
     ext.kotlin_version = '2.1.0'
+    
+    // ========== Repositories pour les dépendances de build ==========
     repositories {
-        google()
-        mavenCentral()
+        google()        // Repository officiel Google (Android SDK, plugins)
+        mavenCentral()  // Repository Maven central (librairies tierces)
     }
 
+    // ========== Dépendances pour le système de build ==========
     dependencies {
+        // Plugin Gradle Android (version 8.1.4 compatible avec AGP 8+)
         classpath 'com.android.tools.build:gradle:8.1.4'
+        
+        // Plugin Kotlin pour Android
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
+// ========== Configuration pour tous les sous-projets ==========
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        google()        // Repository Google pour tous les modules
+        mavenCentral()  // Repository Maven pour tous les modules
     }
 }
 
+// ========== Configuration des dossiers de build ==========
+// Place tous les fichiers de build dans un dossier commun '../build'
+// Cela facilite le nettoyage et évite la duplication
 rootProject.buildDir = '../build'
+
 subprojects {
+    // Chaque sous-projet aura son dossier dans le build racine
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
 subprojects {
+    // S'assure que le module :app est évalué en premier
     project.evaluationDependsOn(':app')
 }
 
+// ========== Tâche de nettoyage ==========
+// Commande : ./gradlew clean
+// Supprime tous les fichiers de build pour repartir à zéro
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
