@@ -1,15 +1,5 @@
 # 📚 DOCUMENTATION COMPLÈTE DU PROJET FXNOW
 
-## 📋 Table des Matières
-
-1. [Vue d'Ensemble](#vue-densemble)
-2. [Fichiers Documentés](#fichiers-documentés)
-3. [Architecture Technique](#architecture-technique)
-4. [Guide de Lecture du Code](#guide-de-lecture-du-code)
-5. [Glossaire des Termes](#glossaire-des-termes)
-
----
-
 ## 🎯 Vue d'Ensemble
 
 FXNow est une application Flutter de conversion de devises utilisant l'architecture **Clean Architecture** avec les patterns suivants :
@@ -17,42 +7,6 @@ FXNow est une application Flutter de conversion de devises utilisant l'architect
 - **Repository Pattern** pour l'accès aux données
 - **StateNotifier** pour la logique métier
 - **GoRouter** pour la navigation
-
----
-
-## 📁 Fichiers Documentés
-
-### ✅ Fichiers Principaux Documentés
-
-| Fichier | Statut | Description |
-|---------|--------|-------------|
-| `lib/main.dart` | ✅ DOCUMENTÉ | Point d'entrée de l'application |
-| `lib/src/app/app.dart` | ✅ DOCUMENTÉ | Configuration globale de l'app |
-| `lib/src/router/routes.dart` | ✅ DOCUMENTÉ | Configuration de la navigation |
-| `lib/src/features/converter/ui/converter_page.dart` | ✅ DOCUMENTÉ | Page principale de conversion |
-| `lib/src/features/converter/controllers/converter_controller.dart` | ✅ DOCUMENTÉ | Logique de conversion |
-| `lib/src/features/converter/widgets/calculator_keypad.dart` | ✅ DOCUMENTÉ | Clavier numérique personnalisé |
-| `README.md` | ✅ CRÉÉ | Documentation complète du projet |
-
-### 📝 Légende des Commentaires
-
-Dans le code documenté, vous trouverez différents types de commentaires :
-
-```dart
-/// ============================================================================
-/// TITRE DE SECTION
-/// ============================================================================
-/// Description générale de la section
-
-/// Documentation d'une classe ou méthode
-/// 
-/// Explication détaillée du fonctionnement
-/// 
-/// @param nomParam : Description du paramètre
-/// @returns Description de ce qui est retourné
-
-// Commentaire en ligne pour expliquer une ligne de code spécifique
-```
 
 ---
 
@@ -270,37 +224,4 @@ Future<void> _loadRate() async {
 ```
 
 ---
-
-## 🔍 Points d'Attention pour la Relecture
-
-### Code Bien Documenté ✅
-- ✅ En-têtes de fichier avec description
-- ✅ Commentaires sur chaque classe et méthode publique
-- ✅ Explication des paramètres avec @param
-- ✅ Explication des algorithmes complexes
-- ✅ Sections clairement délimitées
-
-### Ce qui Montre un Bon Niveau 🎓
-- ✅ Séparation des responsabilités (UI, logique, données)
-- ✅ Gestion propre des erreurs
-- ✅ Code immutable et réactif
-- ✅ Nommage clair des variables et méthodes
-- ✅ Architecture scalable (facile d'ajouter des features)
-
----
-
-## 📞 Aide Supplémentaire
-
-Si vous voulez comprendre un fichier spécifique :
-
-1. **Cherchez l'en-tête** (bloc de commentaires au début)
-2. **Lisez les commentaires de classe**
-3. **Suivez les commentaires des méthodes**
-4. **Les commentaires inline expliquent les lignes complexes**
-
----
-
-**Date de documentation** : 19 Octobre 2025  
-**Version du projet** : 1.0.0  
-**Statut** : Documentation complète ✅
 
