@@ -1,7 +1,5 @@
 # 💱 FXNow - Application de Conversion de Devises
 
-<div align="center">
-
 ![Flutter](https://img.shields.io/badge/Flutter-3.0+-02569B?style=for-the-badge&logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-3.0+-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
@@ -420,26 +418,6 @@ Consultez `DOCUMENTATION_COMPLETE.md` pour :
 
 ---
 
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! 
-
-### Comment Contribuer
-
-1. **Fork** le repository
-2. **Créer** une branche feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit** vos changements (`git commit -m 'Add: Amazing Feature'`)
-4. **Push** vers la branche (`git push origin feature/AmazingFeature`)
-5. **Ouvrir** une Pull Request
-
-### Conventions de Code
-
-#### Nommage
-- **Classes** : `PascalCase` (ex: `ConverterPage`)
-- **Variables** : `camelCase` (ex: `displayAmount`)
-- **Constantes** : `SCREAMING_SNAKE_CASE` (ex: `DEFAULT_CURRENCY`)
-- **Fichiers** : `snake_case` (ex: `converter_page.dart`)
-
 #### Commits
 Format : `Type: Description`
 - `Add:` Nouvelle fonctionnalité
@@ -474,68 +452,6 @@ Format : `Type: Description`
 - [ ] Export PDF des conversions
 - [ ] Support d'autres APIs
 
----
-
-## 📊 Statistiques du Projet
-
-- 📱 **Plateforme** : Android (iOS compatible)
-- 🎨 **Lignes de code** : ~2,500
-- 📦 **Taille APK** : ~15 MB
-- ⚡ **Performance** : 60 FPS constant
-- 🌍 **Langues** : 2 (EN, FR)
-- 💱 **Devises** : 32+
-
----
-
-## 👨‍💻 Auteur
-
-**Junior620**
-
-- 🐙 GitHub: [@Junior620](https://github.com/Junior620)
-- 📧 Email: [Votre Email]
-- 💼 LinkedIn: [Votre Profil]
-
----
-
-## 📄 Licence
-
-Ce projet est sous licence **MIT** - Voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
-```
-MIT License
-
-Copyright (c) 2025 Junior620
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
-```
-
----
-
-## 🙏 Remerciements
-
-- 🏦 **BCE & Frankfurter** pour l'API gratuite
-- 💙 **Flutter Team** pour le framework
-- 🎨 **Material Design** pour les guidelines
-- 👥 **Communauté Flutter** pour le support
-
----
-
-## 📞 Support
-
-Besoin d'aide ? Plusieurs options :
-
-- 💬 **Issues GitHub** : [Créer une issue](https://github.com/Junior620/currency-change/issues)
-- 📧 **Email** : [Votre Email]
-- 💬 **Discord** : [Lien vers serveur Discord si existant]
-
----
-
-<div align="center">
-
-**⭐ Si ce projet vous a aidé, n'hésitez pas à lui donner une étoile ! ⭐**
-
-Made with ❤️ and Flutter
+-
 
 </div>
