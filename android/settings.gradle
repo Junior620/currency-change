@@ -1,61 +1,86 @@
-// ============================================================================
-// GRADLE SETTINGS - CONFIGURATION DES MODULES
-// ============================================================================
-//
-// Ce fichier configure les modules du projet et les repositories des plugins.
-// Il est le premier fichier lu par Gradle lors du build.
-//
-// Responsabilités :
-// - Détection du SDK Flutter
-// - Configuration des plugins Gradle
-// - Déclaration des modules du projet
-//
-// ⚠️ Ce fichier est généré par Flutter - modifications rarement nécessaires
-// ============================================================================
+# ============================================================================
+# GRADLE PROPERTIES - CONFIGURATION GLOBALE
+# ============================================================================
+#
+# Ce fichier contient les propriétés de configuration pour le build Gradle.
+# Ces propriétés affectent les performances et le comportement de Gradle.
+#
+# Sections :
+# - Configuration JVM pour Gradle
+# - Flags de migration Android
+# - Optimisations de build
+#
+# ⚠️ Ces valeurs sont optimisées pour Flutter - modifications rarement nécessaires
+# ============================================================================
 
-// ========== Gestion des Plugins ==========
-pluginManagement {
-    // ========== Détection du chemin du SDK Flutter ==========
-    // Lit le fichier local.properties pour trouver où Flutter est installé
-    def flutterSdkPath = {
-        def properties = new Properties()
-        file("local.properties").withInputStream { properties.load(it) }
-        def flutterSdkPath = properties.getProperty("flutter.sdk")
+# ========== Configuration de la JVM Gradle ==========
+# Alloue 4 Go de RAM maximum pour le processus Gradle
+#
+# Augmentez cette valeur si vous avez des erreurs "Out of Memory"
+# Diminuez-la si votre machine a peu de RAM (minimum 2G recommandé)
+#
+# Syntaxe : -Xmx<taille>G où <taille> est en gigaoctets
+# Exemples :
+# - Machine 8 Go RAM : -Xmx4G (valeur actuelle)
+# - Machine 16 Go RAM : -Xmx6G
+# - Machine 4 Go RAM : -Xmx2G
+org.gradle.jvmargs=-Xmx4G
 
-        // Vérifie que le SDK Flutter est bien configuré
-        assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
-        return flutterSdkPath
-    }()
+# ========== AndroidX ==========
+# Active l'utilisation de la bibliothèque AndroidX
+# AndroidX est la version moderne des bibliothèques de support Android
+#
+# ✅ Toujours à true pour les nouveaux projets
+# ❌ Ne passez jamais à false sauf migration vers ancienne version
+android.useAndroidX=true
 
-    // ========== Inclusion du plugin Flutter ==========
-    // Ajoute les outils de build Flutter au projet
-    // Cela permet d'utiliser les plugins et tâches Flutter
-    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+# ========== Jetifier ==========
+# Active Jetifier pour convertir automatiquement les anciennes dépendances
+# vers AndroidX
+#
+# Jetifier traduit les anciennes librairies (android.support.*)
+# vers les nouvelles (androidx.*)
+#
+# ✅ true = Compatibilité maximale avec anciennes dépendances
+# ❌ false = Build plus rapide mais risque d'erreurs avec vieilles libs
+android.enableJetifier=true
 
-    // ========== Repositories pour les plugins ==========
-    repositories {
-        google()                // Plugins Google/Android
-        mavenCentral()          // Plugins communautaires
-        gradlePluginPortal()    // Plugins Gradle officiels
-    }
-}
+# ============================================================================
+# PROPRIÉTÉS OPTIONNELLES (Décommentez si nécessaire)
+# ============================================================================
 
-// ========== Plugins utilisés ==========
-plugins {
-    // Plugin pour charger automatiquement les plugins Flutter
-    // Version 1.0.0 (standard pour tous les projets Flutter)
-    id "dev.flutter.flutter-plugin-loader" version "1.0.0"
+# ========== Daemon Gradle ==========
+# Active le daemon Gradle pour des builds plus rapides
+# (généralement activé par défaut)
+# org.gradle.daemon=true
 
-    // Plugin Android Application (version 8.7.3)
-    // apply false = chargé mais pas appliqué au projet racine
-    id "com.android.application" version "8.7.3" apply false
+# ========== Build en parallèle ==========
+# Permet de compiler plusieurs modules en parallèle
+# Accélère le build sur machines multi-coeurs
+# org.gradle.parallel=true
 
-    // Plugin Kotlin pour Android (version 2.1.0)
-    // Correspond à ext.kotlin_version dans build.gradle
-    id "org.jetbrains.kotlin.android" version "2.1.0" apply false
-}
+# ========== Cache de configuration ==========
+# Met en cache la configuration Gradle entre les builds
+# Réduit le temps de démarrage de Gradle
+# org.gradle.caching=true
 
-// ========== Modules du projet ==========
-// Déclare les modules à inclure dans le build
-// :app = le module principal de l'application (android/app)
-include ":app"
+# ========== Mode offline ==========
+# Force Gradle à utiliser uniquement les dépendances en cache
+# Utile si vous n'avez pas de connexion Internet
+# org.gradle.offline=true
+
+# ========== Niveau de log ==========
+# Contrôle la verbosité des logs Gradle
+# Valeurs : quiet, warn, lifecycle, info, debug
+# org.gradle.logging.level=lifecycle
+
+# ============================================================================
+# NOTES IMPORTANTES
+# ============================================================================
+#
+# 1. Ce fichier est versionné dans Git
+# 2. Pour des propriétés sensibles, utilisez gradle.properties dans ~/.gradle/
+# 3. Les propriétés ici sont globales pour tout le projet Android
+# 4. Redémarrez Android Studio après modification pour appliquer les changements
+#
+# ============================================================================
