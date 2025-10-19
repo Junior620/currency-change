@@ -1,9 +1,35 @@
+// ============================================================================
+// GRADLE BUILD CONFIGURATION - MODULE APPLICATION
+// ============================================================================
+//
+// Configuration Gradle pour le module Android de l'application FXNow.
+// Ce fichier définit comment l'APK/AAB sera compilé et packagé.
+//
+// Sections principales :
+// - Plugins : Extensions Gradle utilisées
+// - Android : Configuration de l'application Android
+// - Flutter : Intégration avec Flutter
+// - Dependencies : Dépendances Android natives (si nécessaire)
+//
+//  Modifications courantes :
+// - applicationId : Identifiant unique de l'app sur le Play Store
+// - versionCode/versionName : Version de l'application
+// - minSdkVersion/targetSdk/compileSdk : Versions Android supportées
+//
+// ============================================================================
+
+// ========== Plugins Gradle ==========
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
+    id "com.android.application"              // Plugin Android Application
+    id "kotlin-android"                       // Support Kotlin pour Android
+    id "dev.flutter.flutter-gradle-plugin"    // Plugin Flutter
 }
 
+// ========== Chargement des propriétés locales ==========
+// Le fichier local.properties contient :
+// - flutter.sdk : Chemin vers le SDK Flutter
+// - flutter.versionCode : Code version de l'app
+// - flutter.versionName : Nom version de l'app
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -12,46 +38,93 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+// ========== Version de l'application ==========
+// Version Code : Nombre entier incrémental (ex: 1, 2, 3...)
+// Utilisé par Google Play pour déterminer quelle version est plus récente
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
+    flutterVersionCode = '1'  // Valeur par défaut
 }
 
+// Version Name : Nom lisible par l'humain (ex: "1.0.0", "1.2.3")
+// Affiché dans les paramètres et sur le Play Store
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+    flutterVersionName = '1.0'  // Valeur par défaut
 }
 
+// ========== Configuration Android ==========
 android {
+    // Namespace unique de l'application (identique à applicationId)
     namespace "com.fxnow.fxnow"
+
+    // Version du SDK Android utilisée pour compiler l'app
+    // 36 = Android 15 (dernière version stable)
     compileSdk 36
 
+    // ========== Options de compilation Java ==========
     compileOptions {
+        // Utilise Java 17 (requis par Flutter 3.0+)
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
 
+    // ========== Options de compilation Kotlin ==========
     kotlinOptions {
+        // Version JVM cible pour Kotlin (doit correspondre à Java)
         jvmTarget = '17'
     }
 
+    // ========== Configuration par défaut de l'application ==========
     defaultConfig {
+        // Identifiant unique de l'app sur le Play Store
+        //  Ne changez ceci qu'UNE FOIS avant la première publication
         applicationId "com.fxnow.fxnow"
+
+        // Version minimale d'Android supportée
+        // Définie par Flutter (généralement Android 5.0 / API 21)
         minSdkVersion flutter.minSdkVersion
+
+        // Version cible d'Android (dernière version testée)
         targetSdk 36
+
+        // Code version (incrémenté à chaque publication)
         versionCode flutterVersionCode.toInteger()
+
+        // Nom version (ex: "1.0.0")
         versionName flutterVersionName
     }
 
+    // ========== Types de build ==========
     buildTypes {
+        // Configuration pour la version Release (Play Store)
         release {
+            //  IMPORTANT : Pour la production, remplacez par un vrai keystore
+            // Actuellement utilise le keystore de debug (NON sécurisé pour production)
             signingConfig signingConfigs.debug
+
+            // Pour ajouter un vrai keystore :
+            // 1. Créez un keystore : keytool -genkey -v -keystore release.jks ...
+            // 2. Ajoutez key.properties avec les informations du keystore
+            // 3. Remplacez signingConfigs.debug par signingConfigs.release
         }
+
+        // Configuration Debug (générée automatiquement par Android)
+        // Utilisée pour le développement avec 'flutter run'
     }
 }
 
+// ========== Configuration Flutter ==========
 flutter {
+    // Chemin vers le code source Flutter (relatif à android/)
     source '../..'
 }
 
+// ========== Dépendances Android natives ==========
+// Ajoutez ici les dépendances Android si nécessaire
+// Exemple :
+// dependencies {
+//     implementation 'com.google.android.material:material:1.9.0'
+//     implementation 'androidx.core:core-ktx:1.10.1'
+// }
 dependencies {}
