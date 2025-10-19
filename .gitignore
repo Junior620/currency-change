@@ -1,0 +1,223 @@
+# Fichiers et dossiers à ignorer pour Git
+
+# ============================================================================
+# FLUTTER & DART
+# ============================================================================
+
+# Fichiers de build
+**/build/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.pub-cache/
+**/.pub/
+**/pubspec.lock
+
+# Fichiers générés
+**/*.g.dart
+**/*.freezed.dart
+**/*.gr.dart
+**/*.config.dart
+**/generated_plugin_registrant.dart
+**/l10n/app_localizations*.dart
+
+# Coverage
+**/coverage/
+**/*.lcov
+
+# ============================================================================
+# ANDROID
+# ============================================================================
+
+# Gradle
+**/.gradle/
+**/local.properties
+**/gradle-wrapper.jar
+**/gradle-wrapper.properties
+
+# Android Studio
+**/.idea/
+**/.android/
+**/*.iml
+**/*.ipr
+**/*.iws
+
+# Keystore files
+**/*.jks
+**/*.keystore
+
+# NDK
+**/obj/
+
+# Build outputs
+**/android/app/build/
+**/android/app/release/
+**/android/app/debug/
+**/android/.gradle/
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+
+# ============================================================================
+# iOS
+# ============================================================================
+
+# Xcode
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Runner.xcworkspace/
+**/ios/.generated/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/*.pbxuser
+**/*.mode1v3
+**/*.mode2v3
+**/*.perspectivev3
+**/xcuserdata/
+**/*.xccheckout
+**/*.moved-aside
+**/DerivedData/
+**/*.hmap
+**/*.ipa
+**/*.xcuserstate
+
+# CocoaPods
+**/ios/Podfile.lock
+**/ios/.symlinks/
+
+# ============================================================================
+# WEB
+# ============================================================================
+
+**/web/flutter_service_worker.js
+**/web/flutter_service_worker.js.map
+
+# ============================================================================
+# MACOS
+# ============================================================================
+
+**/macos/Pods/
+**/macos/Flutter/ephemeral/
+**/macos/Flutter/Flutter-Generated.xcconfig
+
+# ============================================================================
+# WINDOWS
+# ============================================================================
+
+**/windows/flutter/ephemeral/
+
+# ============================================================================
+# LINUX
+# ============================================================================
+
+**/linux/flutter/ephemeral/
+
+# ============================================================================
+# IDE & EDITEURS
+# ============================================================================
+
+# IntelliJ IDEA
+**/.idea/
+**/*.iml
+**/*.ipr
+**/*.iws
+**/out/
+
+# VS Code
+**/.vscode/
+**/*.code-workspace
+
+# Android Studio
+**/.android/
+**/captures/
+**/.externalNativeBuild/
+**/.cxx/
+
+# Sublime Text
+**/*.sublime-project
+**/*.sublime-workspace
+
+# ============================================================================
+# SYSTÈME D'EXPLOITATION
+# ============================================================================
+
+# macOS
+**/.DS_Store
+**/._*
+**/.Spotlight-V100
+**/.Trashes
+
+# Windows
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+**/$RECYCLE.BIN/
+
+# Linux
+**/*~
+**/.directory
+
+# ============================================================================
+# FICHIERS TEMPORAIRES
+# ============================================================================
+
+**/*.log
+**/*.tmp
+**/*.temp
+**/*.bak
+**/*.swp
+**/*.swo
+**/*~
+
+# ============================================================================
+# SECRETS & CONFIGURATION
+# ============================================================================
+
+# Ne jamais commit ces fichiers
+**/.env
+**/.env.local
+**/.env.*.local
+**/secrets.json
+**/firebase_options.dart
+**/google-services.json
+**/GoogleService-Info.plist
+
+# ============================================================================
+# ASSETS (Optionnel - selon votre choix)
+# ============================================================================
+
+# Décommentez si vous ne voulez pas versionner les assets volumineux
+# **/assets/videos/
+# **/assets/large_files/
+
+# ============================================================================
+# DOCUMENTATION TEMPORAIRE
+# ============================================================================
+
+**/doc/api/
+**/documentation/api/
+
+# ============================================================================
+# DIVERS
+# ============================================================================
+
+**/.fvm/
+**/firebase.json
+**/.firebaserc
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+
+# App Signing
+**/app.*.symbols
+
+# Obfuscation related
+**/app.*.map.json
+
+# Testing
+**/test/**.mocks.dart
+
