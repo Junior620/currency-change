@@ -1,25 +1,61 @@
+// ============================================================================
+// GRADLE SETTINGS - CONFIGURATION DES MODULES
+// ============================================================================
+//
+// Ce fichier configure les modules du projet et les repositories des plugins.
+// Il est le premier fichier lu par Gradle lors du build.
+//
+// Responsabilités :
+// - Détection du SDK Flutter
+// - Configuration des plugins Gradle
+// - Déclaration des modules du projet
+//
+// ⚠️ Ce fichier est généré par Flutter - modifications rarement nécessaires
+// ============================================================================
+
+// ========== Gestion des Plugins ==========
 pluginManagement {
+    // ========== Détection du chemin du SDK Flutter ==========
+    // Lit le fichier local.properties pour trouver où Flutter est installé
     def flutterSdkPath = {
         def properties = new Properties()
         file("local.properties").withInputStream { properties.load(it) }
         def flutterSdkPath = properties.getProperty("flutter.sdk")
+
+        // Vérifie que le SDK Flutter est bien configuré
         assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
         return flutterSdkPath
     }()
 
+    // ========== Inclusion du plugin Flutter ==========
+    // Ajoute les outils de build Flutter au projet
+    // Cela permet d'utiliser les plugins et tâches Flutter
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
+    // ========== Repositories pour les plugins ==========
     repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
+        google()                // Plugins Google/Android
+        mavenCentral()          // Plugins communautaires
+        gradlePluginPortal()    // Plugins Gradle officiels
     }
 }
 
+// ========== Plugins utilisés ==========
 plugins {
+    // Plugin pour charger automatiquement les plugins Flutter
+    // Version 1.0.0 (standard pour tous les projets Flutter)
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
+
+    // Plugin Android Application (version 8.7.3)
+    // apply false = chargé mais pas appliqué au projet racine
     id "com.android.application" version "8.7.3" apply false
+
+    // Plugin Kotlin pour Android (version 2.1.0)
+    // Correspond à ext.kotlin_version dans build.gradle
     id "org.jetbrains.kotlin.android" version "2.1.0" apply false
 }
 
+// ========== Modules du projet ==========
+// Déclare les modules à inclure dans le build
+// :app = le module principal de l'application (android/app)
 include ":app"
